@@ -14,16 +14,16 @@ public class getProbServiceImpl implements ProbService {
 
     @Autowired
     private ProbMapper probMapper;
-    final int max=2;
-    final int all=3;
+    final int max=4;
+    final int all=4;
 
     @Override
     public List<Problem> getProb() {
         int num=0;
-        List<Problem> problemList=new ArrayList<>();
+        List list=new ArrayList<>();
         int flags[]=new int[max];
         Random random=new Random();
-        while (problemList.size()<max)
+        while (list.size()<max)
         {
             int rand= random.nextInt(all+1);
             if(rand==0)continue;
@@ -38,10 +38,10 @@ public class getProbServiceImpl implements ProbService {
             if(flag)
             {
                 flags[num]=rand;
-                problemList.add(probMapper.getProb(rand));
+                list.add(rand);
                 num++;
             }
         }
-        return problemList;
+        return probMapper.getProb(list);
     }
 }

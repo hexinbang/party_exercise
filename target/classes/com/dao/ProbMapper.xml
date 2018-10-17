@@ -14,7 +14,11 @@
         <result column="sfour" property="option_D"></result>
     </resultMap>
 
-    <select id="getProb" parameterType="int" resultMap="getProb">
-        select * from  problem where id=#{id}
+    <select id="getProb" parameterType="java.util.List" resultMap="getProb">
+        select * from  problem
+        where id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
     </select>
 </mapper>
