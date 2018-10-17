@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ProbMapper">
+    <resultMap id="getProb" type="problem">
+        <id column="id" property="id"></id>
+        <result column="type" property="type"></result>
+        <result column="desc" property="prob"></result>
+        <result column="sone" property="option_A"></result>
+        <result column="stwo" property="option_B"></result>
+        <result column="sthree" property="option_C"></result>
+        <result column="sfour" property="option_D"></result>
+    </resultMap>
+
+    <select id="getProb" parameterType="int" resultMap="getProb">
+        select * from  problem where id=#{id}
+    </select>
+</mapper>
