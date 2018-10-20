@@ -19,17 +19,15 @@ public class getProbServiceImpl implements ProbService {
 
     @Override
     public List<Problem> getProb() {
-        int num=0;
-        List list=new ArrayList<>();
-        int flags[]=new int[max];
+        List<Integer>list=new ArrayList<>();
         Random random=new Random();
         while (list.size()<max)
         {
             int rand= random.nextInt(all+1);
             if(rand==0)continue;
             boolean flag=true;
-            for(int i=0;i<flags.length;i++){
-                if(rand==flags[i])
+            for(int i:list){
+                if(rand==i)
                 {
                     flag=false;
                     break;
@@ -37,9 +35,7 @@ public class getProbServiceImpl implements ProbService {
             }
             if(flag)
             {
-                flags[num]=rand;
                 list.add(rand);
-                num++;
             }
         }
         return probMapper.getProb(list);
